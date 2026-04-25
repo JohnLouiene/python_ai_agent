@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 from prompts import system_prompt
+from call_function import available_functions
 
 def main():
     load_dotenv()
@@ -26,8 +27,11 @@ def main():
         response = client.models.generate_content(
             model='gemini-2.5-flash',
             contents= messages,
-            config=types.GenerateContentConfig(system_instruction=system_prompt,
-            temperature=0)
+            config=types.GenerateContentConfig(
+            tools=[available_functions],
+            system_instruction=system_prompt,
+            temperature=0
+                )
             )
     except Exception as e:
         raise RuntimeError("API did not connect") from e
@@ -42,8 +46,13 @@ def main():
         print(f"User prompt: {args.user_prompt}")
         print(f"Prompt tokens: {prompt_token_count}")
         print(f"Response tokens: {response_token_count}")
+        print(f"Response:\n{response.text}")
+
+    if response.function_calls != None:
+        for function_call in response.function_calls:
+            print(f"Calling function: {function_call.name}({function_call.args})i")
+    else:
         print(f"Response:\n{response.text}") 
-    print(f"Response:\n{response.text}") 
 
 if __name__ == "__main__":
     main()
