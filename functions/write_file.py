@@ -1,4 +1,5 @@
 import os
+from google.genai import types
 
 def write_file(working_directory, file_path, content):
     try:
@@ -24,3 +25,23 @@ def write_file(working_directory, file_path, content):
 
     except Exception as e:
         return f"Error: {e}"
+
+#Schema to declare to an LLM how each function will be called.
+schema_write_file = types.FunctionDeclaration(
+    name="write_file",
+    description="Overwrites the contents of the specified file relative to the working directory",
+    parameters=types.Schema(
+        type=types.Type.OBJECT,
+        properties={
+            "file_path": types.Schema(
+                type=types.Type.STRING,
+                description="File path used to open and overwrite the contents of a file, relative to the working directory",
+            ),
+            "content": types.Schema(
+                type=types.Type.STRING,
+                description="A string that will overwrite the contents of the specified file"
+            ),
+        },
+        required=["file_path", "content"],
+    ),
+)
