@@ -1,38 +1,67 @@
 # python_ai_agent
-- An A.I. agent made using the python language and Google's Gemini A.I
 
-# Installation and Setup
-- Clone the Repository
+An AI agent built with Python and Google's Gemini AI.
 
-# git clone https://github.com/JohnLouiene/python_ai_agent
-- open a terminal
-- cd ./file_path
+---
 
-# Create a Virtual Environment (Doing this is optional but is good practice to do so)
-- uv venv
+## Installation & Setup
 
-# python3 -m venv venv
-- source venv/bin/activate  # On Windows use: venv\Scripts\activate
+### 1. Clone the Repository
+```bash
+git clone https://github.com/JohnLouiene/python_ai_agent
+cd ./file_path
+```
 
-# Install Dependencies
-- pip install -r requirements.txt
+### 2. Create a Virtual Environment *(optional but recommended)*
+```bash
+# Using uv
+uv venv
 
-# Environment Variables
-- The agent requires an API key from google to function.
-- See .env.example
-- Create a .env file in the root directory.
-- Add your Gemini API key:
-- GEMINI_API_KEY=your_actual_key_here
+# Or using standard Python
+python3 -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+```
 
+### 3. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
 
-# Run the Agent
-- python3 main.py "Your prompt here"
-# Run the Agent (If you have a virtual environment)
-- uv run main.py "Your prompt here"
+### 4. Set Up Environment Variables
 
-# Verbose flag (Optional to see how many tokens is used or to see what the message loop's contents are)
-- (run the agent) main.py --verbose "Your prompt here"
+The agent requires a Gemini API key to function. See `.env.example` for reference.
 
-# Extra notes
-- The calculator folder is a stand in for your actual file
-- The functions folder are the tools the model calls currently set to be able to read, write and run files.
+1. Create a `.env` file in the root directory.
+2. Add your API key:
+```env
+GEMINI_API_KEY=your_actual_key_here
+```
+
+---
+
+## Usage
+
+### Run the Agent
+```bash
+# Standard
+python3 main.py "Your prompt here"
+
+# With a virtual environment (uv)
+uv run main.py "Your prompt here"
+```
+
+### Verbose Flag *(optional)*
+
+Shows token usage and message loop contents.
+```bash
+python3 main.py --verbose "Your prompt here"
+```
+
+---
+
+## Project Structure
+
+| Folder | Description |
+|---|---|
+| `calculator/` | A sample project directory — replace with your actual files |
+| `functions/` | Tools available to the model: read, write, and run files |
