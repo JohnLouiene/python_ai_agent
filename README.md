@@ -32,3 +32,7 @@
 
 # Verbose flag (Optional to see how many tokens is used or to see what the message loop's contents are)
 - (run the agent) main.py --verbose "Your prompt here"
+
+# Extra notes
+- The calculator folder is a stand in for your actual file
+- The functions folder are the tools the model calls currently set to be able to read, write and run files.
