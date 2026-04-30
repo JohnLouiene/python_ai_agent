@@ -41,7 +41,7 @@ def run_python_file(working_directory, file_path, args=None):
     except Exception as e:
         return f"Error: executing Python file: {e}"
 
-#Schema to declare to an LLM how each function will be called.
+#Schema to let the model access the run_python_file function and add it to its context.
 schema_run_python_file = types.FunctionDeclaration(
     name="run_python_file",
     description="Executes a Python file located at the given path relative to the working directory. Optional CLI arguments can be passed to the script.",

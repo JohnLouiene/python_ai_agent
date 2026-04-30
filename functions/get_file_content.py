@@ -26,7 +26,7 @@ def get_file_content(working_directory, file_path):
     except Exception as e:
         return f"Error: {e}"
 
-#Schema to declare to an LLM how each function will be called.
+#Schema to let the model access the get_file_content function and add it to its context.
 schema_get_file_content = types.FunctionDeclaration(
     name="get_file_content",
     description=f"Returns the contents of a specified file relative to the working directory, providing a maximum character size of {MAX_CHARS}",

@@ -26,7 +26,7 @@ def write_file(working_directory, file_path, content):
     except Exception as e:
         return f"Error: {e}"
 
-#Schema to declare to an LLM how each function will be called.
+#Schema to let the model access the write_file function and add it to its context.
 schema_write_file = types.FunctionDeclaration(
     name="write_file",
     description="Overwrites the contents of the specified file relative to the working directory",
